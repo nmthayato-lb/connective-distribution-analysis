@@ -141,4 +141,7 @@ python3 scripts/30_c1_and_numbers.py --count out/zeihougaku --c1 <引用と文ID
 
 ## ライセンス
 
-未定（著者が決める）。
+- スクリプト（`connectives/`・`scripts/` など）：MIT ライセンス（`LICENSE`）
+- データ（`data/` の判断の記録・対象一覧・辞書）：CC BY 4.0（`data/LICENSE`）
+
+分析した論文の本文・PDF はこのリポジトリに含まれておらず、上のライセンスの対象ではありません。
