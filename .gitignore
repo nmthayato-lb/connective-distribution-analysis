@@ -1,0 +1,10 @@
+config.toml
+.env
+__pycache__/
+*.pyc
+out/
+bodies/
+corrections/
+*.pdf
+*.png
+.DS_Store

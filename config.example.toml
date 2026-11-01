@@ -1,0 +1,4 @@
+# config.toml に写して書き換える（config.toml は git に入れない）。環境変数があればそちらが優先される。
+[paths]
+data_dir = "/path/to/data"            # KIYO_DATA_DIR。本文は data_dir/bodies/<zeihougaku|nta>/<ID>.txt
+# corrections_dir = "/path/to/corrections"   # KIYO_CORRECTIONS_DIR。省略時は data_dir/corrections

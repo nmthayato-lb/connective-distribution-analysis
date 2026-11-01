@@ -1,0 +1,3 @@
+# このリポジトリのスクリプトは Python 3.11 以上の標準ライブラリだけで動く（第三者のパッケージは使わない）。
+# 動作を確かめた環境: Python 3.14.7、poppler 26.07.0（pdftohtml・pdftotext・pdftoppm・pdfinfo。pip では入らない）
+# 作業時の版は、Python と poppler 以外は未確認。
