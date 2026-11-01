@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "このソフトウェアを引用するときは、次の情報を使ってください。"
+title: "接続詞の分布分析：租税法学論文の集計スクリプトと判断の記録"
+abstract: "Scripts and decision records for the distribution analysis of sentence-initial connectives in Japanese tax law papers (Zeihogaku, Zeidai Ronso, Zeidai Journal, 2015-2023). Scripts are under the MIT License; data in data/ are under CC BY 4.0. Article texts are not included."
+type: software
+authors:
+  - family-names: Numata
+    given-names: Hayato
+    affiliation: LEC Graduate School of Accounting
+version: "1.0"
+license: MIT
+repository-code: "https://github.com/nmthayato-lb/connective-distribution-analysis"
+keywords:
+  - connectives
+  - tax law
+  - academic writing
+  - corpus analysis

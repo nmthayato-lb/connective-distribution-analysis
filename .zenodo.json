@@ -1,0 +1,9 @@
+{
+  "title": "接続詞の分布分析：租税法学論文の集計スクリプトと判断の記録 (Distribution Analysis of Connectives in Japanese Tax Law Papers: Scripts and Decision Records)",
+  "description": "<p>Scripts and decision records for the distribution analysis of sentence-initial connectives in Japanese tax law papers (Zeihogaku, Zeidai Ronso, Zeidai Journal, 2015-2023).</p><p>Scripts are under the MIT License. Data in data/ (decision records, target list, dictionary) are under CC BY 4.0. The texts and PDFs of the analyzed articles are not included.</p>",
+  "upload_type": "software",
+  "creators": [{"name": "Numata, Hayato", "affiliation": "LEC Graduate School of Accounting"}],
+  "license": "MIT",
+  "keywords": ["connectives", "tax law", "academic writing", "corpus analysis"],
+  "language": "jpn"
+}
