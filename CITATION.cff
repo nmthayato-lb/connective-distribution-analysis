@@ -7,7 +7,7 @@ authors:
   - family-names: Numata
     given-names: Hayato
     affiliation: LEC Graduate School of Accounting
-version: "1.0.1"
+version: "1.0.2"
 license: MIT
 repository-code: "https://github.com/nmthayato-lb/connective-distribution-analysis"
 keywords:

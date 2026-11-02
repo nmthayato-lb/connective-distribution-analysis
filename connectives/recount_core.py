@@ -7,8 +7,8 @@ import bisect, csv, hashlib, re, unicodedata
 from pathlib import Path
 
 GROUPS = {
- '添加・並列':'また そして さらに あるいは 加えて しかも かつ 及び および 又は または 並びに ならびに 若しくは もしくは'.split(),
- '逆接・対比':'しかし しかしながら ものの にもかかわらず ところが だが とはいえ それにもかかわらず 一方 他方 これに対して 逆に その一方で それに対して 反面'.split(),
+ '添加・並列':'また そして さらに あるいは 加えて しかも 及び および 又は または 並びに ならびに 若しくは もしくは'.split(),
+ '逆接・対比':'しかし しかしながら にもかかわらず ところが だが とはいえ それにもかかわらず 一方 他方 これに対して 逆に その一方で それに対して 反面'.split(),
  '説明・換言':'すなわち 例えば つまり たとえば 具体的には 要するに'.split(),
  '補足・留保':'なお ただし もっとも ただ'.split(),
  '理由・帰結':'したがって そのため このため その結果 よって なぜなら ゆえに だから というのも したがい'.split(),
@@ -16,7 +16,7 @@ GROUPS = {
 }
 CLASS = {term:category for category,terms in GROUPS.items() for term in terms}
 BASE = list(CLASS)
-assert len(BASE)==54
+assert len(BASE)==52
 SHORT='これに対し'
 CLASS[SHORT]='逆接・対比'
 PARALLEL=set('及び および 又は または 並びに ならびに 若しくは もしくは'.split())
@@ -119,7 +119,7 @@ def matches(text,terms):
 def determine_position(text,a,b,sentence_start,term):
     prefix=text[sentence_start:a].lstrip('「『（(【〈《」』)）')
     if not prefix:return '狭義文頭'
-    if term in {'ものの','にもかかわらず','それにもかかわらず'}:return '節末候補'
+    if term in {'にもかかわらず','それにもかかわらず'}:return '節末候補'
     left=max((text.rfind(c,sentence_start,a) for c in '，、,；;：:'+SENTINEL),default=sentence_start-1)+1
     if not text[left:a].lstrip('「『（(【〈《」』)）'):return '節頭候補'
     return '文中_位置対象外'
@@ -129,22 +129,18 @@ def rule_status(term,text,a,b,position,quoted,manual=None):
     l=text[max(0,a-24):a];r=text[b:b+40]
     if quoted:return '除外_引用内部','引用符内。引用種類の確定とは別。','rule_quote'
     if term in PARALLEL:return '別掲_語句並立','並列の8表記は文頭でも別掲。','rule_eight'
-    if term=='かつ' and (r.startswith(('て','た')) or l.endswith(('な','分','ま'))):
-        return '除外_非接続','かつて・なかつた等の部分一致。','rule_partial'
     if term=='ただし' and r.startswith('書'):return '除外_非接続','ただし書。','rule_partial'
     if term=='ただ' and r.startswith(('し','の','単','ち','一','ひと','で','なら')):
         return '除外_非接続','限定/副詞または辞書外語形の部分一致。','rule_partial'
     if term=='なお' and r.startswith('かつ'):return '除外_辞書外複合語','なおかつの一部分。','rule_partial'
-    if term=='かつ' and l.endswith('なお'):return '除外_辞書外複合語','なおかつの一部分。','rule_partial'
-    if term in {'かつ','あるいは'}:
+    # 規則IDは旧記録との対応のため維持する。対象は「あるいは」だけ。
+    if term=='あるいは':
         if position=='狭義文頭':
-            return '主集計候補','かつ/あるいはは狭義文頭だけ主集計。','rule_katsu_head_only'
-        return '別掲_文中並立','文中のかつ/あるいはは読点直後を含め別掲。','rule_katsu_head_only'
+            return '主集計候補','「あるいは」は狭義文頭だけ主集計。','rule_katsu_head_only'
+        return '別掲_文中並立','文中の「あるいは」は読点直後を含め別掲。','rule_katsu_head_only'
     if term=='一方' and (r.startswith(('的','通行','当事者','のみ','だけ')) or l.endswith('当事者の')):
         return '除外_非接続','当事者/方向等の一方。','rule_partial'
     if term=='他方' and r.startswith(('当事者','の当事者')):return '除外_非接続','他方当事者。','rule_partial'
-    if term=='ものの' and (l.endswith(('その','そのような','そうした')) or r.startswith(('ほか','うち','み','に','存在','意味','性質'))):
-        return '除外_非接続','名詞もの＋のの候補。','rule_partial'
     if term in {'よって','したがって','したがい'} and l.endswith(('に','した')):
         return '除外_非接続','によって/にしたがって等。','rule_partial'
     if term=='そのため' and r.startswith('の'):return '除外_非接続','そのための。','rule_partial'

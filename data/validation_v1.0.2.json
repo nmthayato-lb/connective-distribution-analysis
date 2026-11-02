@@ -1,0 +1,86 @@
+{
+  "version": "1.0.2",
+  "date": "2026-11-02",
+  "purpose": "かつ・もののを辞書から除いた原稿v12b対応版の件数と再現を確認するため",
+  "dictionary_base_terms": 52,
+  "decision_rows": 85928,
+  "removed_decision_rows": 4240,
+  "main": {
+    "税法学": {
+      "本数": 145,
+      "主集計": 8003,
+      "地の文の字数": 2300499
+    },
+    "税大ジャーナル": {
+      "本数": 38,
+      "主集計": 2106,
+      "地の文の字数": 660735
+    },
+    "税大論叢": {
+      "本数": 122,
+      "主集計": 16675,
+      "地の文の字数": 5592662
+    }
+  },
+  "kanji9": {
+    "税法学": {
+      "本数": 145,
+      "主集計": 8143,
+      "地の文の字数": 2300499
+    },
+    "税大ジャーナル": {
+      "本数": 38,
+      "主集計": 2139,
+      "地の文の字数": 660735
+    },
+    "税大論叢": {
+      "本数": 122,
+      "主集計": 16954,
+      "地の文の字数": 5592662
+    }
+  },
+  "kanji_increments": {
+    "税法学": 140,
+    "税大論叢": 279,
+    "税大ジャーナル": 33
+  },
+  "checks": {
+    "input_bodies_sha256_match_targets": 305,
+    "decision_rows_match_new_code_exactly": 85928,
+    "new_main_added": 0,
+    "new_main_removed": 1,
+    "removed_main": {
+      "ID": "core4-1433",
+      "source_start": 15139,
+      "source_end": 15141,
+      "surface": "かつ"
+    },
+    "kanji_added_occurrence_set_unchanged": 452,
+    "retained_naokatsu_nao_exclusion": true,
+    "citation_manuscript_numeric_values_match_existing_recount": 1706,
+    "citation_manuscript_numeric_differences": 0,
+    "rates_and_sixclass_rows": 6,
+    "position_table_rows": 480,
+    "sign_test_rows": 480
+  },
+  "audit_sampling": {
+    "redrawn": false,
+    "Tax146": "旧147件から「かつ」層1件を除いた数。新条件で再選定した標本ではない。",
+    "new_condition_error_rates_estimated": false,
+    "additional_image_audit": false
+  },
+  "conditions_unchanged": [
+    "入力本文とSHA-256",
+    "引用符の既存対と補完",
+    "用法補正",
+    "見出し境界",
+    "結びの節",
+    "漢字9表記の対応"
+  ],
+  "decision_csv_sha256": "885c6ae1d57b92d6fd0eac790714b801efbb0a0dd712f35caaf25242d1c07968",
+  "licenses": {
+    "code": "MIT",
+    "data": "CC BY 4.0"
+  },
+  "publication_scope": "既存のID・位置・分類・判断と集約数値だけ。本文、原論文PDF、頁画像、著者名付き対象一覧、私的パスは追加しない。"
+}
